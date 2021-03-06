@@ -70,14 +70,13 @@ Parameter -v is responsible for value of JSON request. It can be any JSON elemen
 Parameter -in is responsible for the name of file, where the program reads JSON request. It shoud be stored in JSON format.
 
 EXAMPLES:
+Testing .json files are situated in folser client/data/. Names of test .json files are shown as examples.
 At first, you need to start server. 
 
 Starting the server:
 
 > java Main
 Server started!
-
-There is no need to format JSON in the output.
 
 Starting the clients:
 
@@ -89,6 +88,17 @@ Sent:
 
     {"type":"set","key":"1","value":"Hello world!"}
 Received: {"response":"OK"}
+
+> java Main -t get -k 1
+ 
+Client started!
+
+Sent:
+
+    {"type":"get","key":"1"}
+Received: 
+
+    {"key":"1","value":"Hello world!"}
 
 > java Main -in setFile.json 
 
@@ -122,7 +132,7 @@ Sent:
     {"type":"set","key":["person","rocket","launches"],"value":"88"}
 Received: {"response":"OK"}
 
-> java Main -in secondGetFile.json 
+> java Main -in secondGetFile.json
 
 Client started!
 

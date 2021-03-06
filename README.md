@@ -91,27 +91,6 @@ Received: {"response":"OK"}
 
 Client started!
 Sent:
-    {
-       "type":"set",
-       "key":"person",
-       "value":{
-          "name":"Elon Musk",
-          "car":{
-             "model":"Tesla Roadster",
-             "year":"2018"
-          },
-          "rocket":{
-             "name":"Falcon 9",
-             "launches":"87"
-          }
-       }
-    }
-Received: {"response":"OK"}
-
-> java Main -in setFile.json 
-
-Client started!
-Sent:
 
     {
        "type":"set",
@@ -134,13 +113,15 @@ Received: {"response":"OK"}
 > java Main -in updateFile.json 
 
 Client started!
-Sent: {"type":"set","key":["person","rocket","launches"],"value":"88"}
+Sent: 
+    {"type":"set","key":["person","rocket","launches"],"value":"88"}
 Received: {"response":"OK"}
 
 > java Main -in secondGetFile.json 
 
 Client started!
-Sent: {"type":"get","key":["person"]}
+Sent: 
+    {"type":"get","key":["person"]}
 Received:
 
     {
@@ -159,14 +140,19 @@ Received:
     }
 
 > java Main -in deleteFile.json 
+
 Client started!
-Sent: {"type":"delete","key":["person","car","year"]}
+Sent: 
+    {"type":"delete","key":["person","car","year"]}
 Received: {"response":"OK"}
 
 > java Main -in secondGetFile.json 
+
 Client started!
-Sent: {"type":"get","key":["person"]}
+Sent: 
+    {"type":"get","key":["person"]}
 Received:
+
     {
        "response":"OK",
        "value":{
@@ -182,6 +168,8 @@ Received:
     }
 
 > java Main -t exit 
+
 Client started!
-Sent: {"type":"exit"}
+Sent: 
+    {"type":"exit"}
 Received: {"response":"OK"}

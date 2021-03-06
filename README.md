@@ -13,7 +13,7 @@ This database is able to store not only strings, but any JSON objects as values.
 
 The key should not only be a string since the user needs to retrieve part of the JSON value. For example, in the code snippet below, the user wants to get only the surname of the person:
 
-{
+    {
     ... ,
 
     "person": {
@@ -21,7 +21,7 @@ The key should not only be a string since the user needs to retrieve part of the
         "surname": "Smith"
     }
     ...
-}
+    }
 
 Then, the user should type the full path to this field in a form of a JSON array: ["person", "surname"]. If the user wants to get the full person object, then they should type ["person"]. The user is able to set separate values inside JSON values. For example, it it is possible to set only the surname using a key ["person", "surname"] and any value including another JSON. Moreover, the user is able to set new values inside other JSON values. For example, using a key ["person", "age"] and a value 25, the person object should look like this:
 

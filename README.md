@@ -84,7 +84,11 @@ Starting the clients:
 > java Main -t set -k 1 -v "Hello world!"
  
 Client started!
-Sent: {"type":"set","key":"1","value":"Hello world!"}
+
+Sent:
+
+    {"type":"set","key":"1","value":"Hello world!"}
+    
 Received: {"response":"OK"}
 
 > java Main -in setFile.json 
@@ -113,15 +117,21 @@ Received: {"response":"OK"}
 > java Main -in updateFile.json 
 
 Client started!
+
 Sent: 
+
     {"type":"set","key":["person","rocket","launches"],"value":"88"}
+    
 Received: {"response":"OK"}
 
 > java Main -in secondGetFile.json 
 
 Client started!
+
 Sent: 
+    
     {"type":"get","key":["person"]}
+    
 Received:
 
     {
@@ -142,15 +152,21 @@ Received:
 > java Main -in deleteFile.json 
 
 Client started!
+
 Sent: 
+
     {"type":"delete","key":["person","car","year"]}
+    
 Received: {"response":"OK"}
 
 > java Main -in secondGetFile.json 
 
 Client started!
-Sent: 
+
+Sent:
+
     {"type":"get","key":["person"]}
+    
 Received:
 
     {
@@ -171,5 +187,6 @@ Received:
 
 Client started!
 Sent: 
+
     {"type":"exit"}
 Received: {"response":"OK"}

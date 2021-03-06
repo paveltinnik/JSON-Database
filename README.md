@@ -71,7 +71,6 @@ Parameter -in is responsible for the name of file, where the program reads JSON 
 
 EXAMPLES:
 At first, you need to start server. 
-The greater-than symbol followed by a space (> ) represents the user input. Note that it's not part of the input.
 
 Starting the server:
 
@@ -113,6 +112,7 @@ Received: {"response":"OK"}
 
 Client started!
 Sent:
+
     {
        "type":"set",
        "key":"person",
@@ -128,17 +128,21 @@ Sent:
           }
        }
     }
+
 Received: {"response":"OK"}
 
 > java Main -in updateFile.json 
+
 Client started!
 Sent: {"type":"set","key":["person","rocket","launches"],"value":"88"}
 Received: {"response":"OK"}
 
 > java Main -in secondGetFile.json 
+
 Client started!
 Sent: {"type":"get","key":["person"]}
 Received:
+
     {
        "response":"OK",
        "value":{

@@ -82,12 +82,14 @@ There is no need to format JSON in the output.
 
 Starting the clients:
 
-> java Main -t set -k 1 -v "Hello world!" 
+> java Main -t set -k 1 -v "Hello world!"
+ 
 Client started!
 Sent: {"type":"set","key":"1","value":"Hello world!"}
 Received: {"response":"OK"}
 
 > java Main -in setFile.json 
+
 Client started!
 Sent:
     {
@@ -108,6 +110,7 @@ Sent:
 Received: {"response":"OK"}
 
 > java Main -in setFile.json 
+
 Client started!
 Sent:
     {

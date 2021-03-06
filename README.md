@@ -14,54 +14,54 @@ This database is able to store not only strings, but any JSON objects as values.
 The key should not only be a string since the user needs to retrieve part of the JSON value. For example, in the code snippet below, the user wants to get only the surname of the person:
 
     {
-    ... ,
+        ... ,
 
-    "person": {
-        "name": "Adam",
-        "surname": "Smith"
-    }
-    ...
+        "person": {
+            "name": "Adam",
+            "surname": "Smith"
+        }
+        ...
     }
 
 Then, the user should type the full path to this field in a form of a JSON array: ["person", "surname"]. If the user wants to get the full person object, then they should type ["person"]. The user is able to set separate values inside JSON values. For example, it it is possible to set only the surname using a key ["person", "surname"] and any value including another JSON. Moreover, the user is able to set new values inside other JSON values. For example, using a key ["person", "age"] and a value 25, the person object should look like this:
 
-{
-    ... ,
+    {
+        ... ,
 
-    "person": {
-        "name": "Adam",
-        "surname": "Smith",
-        "age": 25
+        "person": {
+            "name": "Adam",
+            "surname": "Smith",
+            "age": 25
 
+        }
+        ...
     }
-    ...
-}
 
 If there are no root objects, the server should create them, too. For example, if the database does not have a "person1" key but the user set the value {"id1": 12, "id2": 14} for the key ["person1", "inside1", "inside2"], then the database will have the following structure:
 
-{
-    ... ,
-    "person1": {
-        "inside1": {
-            "inside2" : {
-                "id1": 12,
-                "id2": 14
+    {
+        ... ,
+        "person1": {
+            "inside1": {
+                "inside2" : {
+                    "id1": 12,
+                    "id2": 14
+                }
             }
-        }
-    },
-    ...
-}
+        },
+        ...
+    }
 
 The deletion of objects follows the same rules. If a user deletes the object above by the key ["person1", "inside1", "inside2], then only "inside2" is deleted, not "inside1" or "person1". See the example below:
 
-{
-    ... ,
-    "person1": {
-        "inside1": { }
-    }
+    {
+        ... ,
+        "person1": {
+            "inside1": { }
+        }
 
-    ...
-}
+        ...
+    }
 
 To start client you should add arguments to run configurarion. It shoud always contain -t, -k, -v. Also you can  make JSON request from file, where request is stored. Then you need add only -in argument.
 Parameter -t is responsible for type of request. It can be set, get, delete and exit.
@@ -90,41 +90,41 @@ Received: {"response":"OK"}
 > java Main -in setFile.json 
 Client started!
 Sent:
-{
-   "type":"set",
-   "key":"person",
-   "value":{
-      "name":"Elon Musk",
-      "car":{
-         "model":"Tesla Roadster",
-         "year":"2018"
-      },
-      "rocket":{
-         "name":"Falcon 9",
-         "launches":"87"
-      }
-   }
-}
+    {
+       "type":"set",
+       "key":"person",
+       "value":{
+          "name":"Elon Musk",
+          "car":{
+             "model":"Tesla Roadster",
+             "year":"2018"
+          },
+          "rocket":{
+             "name":"Falcon 9",
+             "launches":"87"
+          }
+       }
+    }
 Received: {"response":"OK"}
 
 > java Main -in setFile.json 
 Client started!
 Sent:
-{
-   "type":"set",
-   "key":"person",
-   "value":{
-      "name":"Elon Musk",
-      "car":{
-         "model":"Tesla Roadster",
-         "year":"2018"
-      },
-      "rocket":{
-         "name":"Falcon 9",
-         "launches":"87"
-      }
-   }
-}
+    {
+       "type":"set",
+       "key":"person",
+       "value":{
+          "name":"Elon Musk",
+          "car":{
+             "model":"Tesla Roadster",
+             "year":"2018"
+          },
+          "rocket":{
+             "name":"Falcon 9",
+             "launches":"87"
+          }
+       }
+    }
 Received: {"response":"OK"}
 
 > java Main -in updateFile.json 
@@ -136,20 +136,20 @@ Received: {"response":"OK"}
 Client started!
 Sent: {"type":"get","key":["person"]}
 Received:
-{
-   "response":"OK",
-   "value":{
-      "name":"Elon Musk",
-      "car":{
-         "model":"Tesla Roadster",
-         "year":"2018"
-      },
-      "rocket":{
-         "name":"Falcon 9",
-         "launches":"88"
-      }
-   }
-}
+    {
+       "response":"OK",
+       "value":{
+          "name":"Elon Musk",
+          "car":{
+             "model":"Tesla Roadster",
+             "year":"2018"
+          },
+          "rocket":{
+             "name":"Falcon 9",
+             "launches":"88"
+          }
+       }
+    }
 
 > java Main -in deleteFile.json 
 Client started!
@@ -160,19 +160,19 @@ Received: {"response":"OK"}
 Client started!
 Sent: {"type":"get","key":["person"]}
 Received:
-{
-   "response":"OK",
-   "value":{
-      "name":"Elon Musk",
-      "car":{
-         "model":"Tesla Roadster"
-      },
-      "rocket":{
-         "name":"Falcon 9",
-         "launches":"88"
-      }
-   }
-}
+    {
+       "response":"OK",
+       "value":{
+          "name":"Elon Musk",
+          "car":{
+             "model":"Tesla Roadster"
+          },
+          "rocket":{
+             "name":"Falcon 9",
+             "launches":"88"
+          }
+       }
+    }
 
 > java Main -t exit 
 Client started!
